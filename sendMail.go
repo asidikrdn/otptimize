@@ -41,7 +41,7 @@ func sendVerificationEmail(appName string, targetName string, targetEmail string
 
 	// create new message
 	verificationEmail := gomail.NewMessage()
-	verificationEmail.SetHeader("From", appName)
+	verificationEmail.SetHeader("From", fmt.Sprintf("%s <%s>", appName, targetEmail))
 	verificationEmail.SetHeader("To", targetEmail)
 	verificationEmail.SetHeader("Subject", "Email Verification")
 	verificationEmail.SetBody("text/html", bodyMail.String())
