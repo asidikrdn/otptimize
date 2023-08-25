@@ -27,7 +27,7 @@ func ConnectionInit(mailConfig MailConfig, redisConfig RedisConfig) {
 }
 
 // =============================================== GENERATE OTP AND SEND IT BY EMAIL =============================================== //
-func GenerateAndSendOTP(otpLength int, appName string, targetName string, targetEmail string) error {
+func GenerateAndSendOTP(otpLength int, expiredTime int, appName string, targetName string, targetEmail string) error {
 	// generate otp code
 	otpToken := otpGenerator(otpLength)
 
@@ -38,7 +38,7 @@ func GenerateAndSendOTP(otpLength int, appName string, targetName string, target
 		return err
 	}
 
-	err = setRedisValue(targetEmail, hashedOTP, time.Minute*5)
+	err = setRedisValue(targetEmail, hashedOTP, time.Minute*time.Duration(expiredTime))
 	if err != nil {
 		fmt.Println("ERROR on save token to redis : ", err)
 		return err

@@ -30,7 +30,7 @@ func main() {
 	otptimize.ConnectionInit(mailConfig, redisConfig)
 
 	// Generate dan kirim OTP
-	err := otptimize.GenerateAndSendOTP(6, "MyApp", "John Doe", "johndoe@example.com")
+	err := otptimize.GenerateAndSendOTP(6, 5, "MyApp", "John Doe", "johndoe@example.com")
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
