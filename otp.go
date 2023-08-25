@@ -45,7 +45,7 @@ func GenerateAndSendOTP(otpLength int, appName string, targetName string, target
 	}
 
 	// send otp to target mail
-	sendVerificationEmail(appName, targetName, targetEmail, otpToken)
+	go sendVerificationEmail(appName, targetName, targetEmail, otpToken)
 
 	return nil
 }
@@ -63,6 +63,7 @@ func ValidateOTP(email string, otpToken string) (bool, error) {
 
 	// compare token
 	if !checkToken(otpToken, token) {
+		err := &customError{Message: "Token invalid"}
 		fmt.Println("ERROR on compare token : ", err)
 		return false, err
 	}

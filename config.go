@@ -26,13 +26,6 @@ func checkToken(token, hashedToken string) bool {
 }
 
 // =============================================== GOMAIL =============================================== //
-type MailConfig struct {
-	Host     string
-	Port     int
-	Email    string
-	Password string
-}
-
 // email connection
 var MailConnection *gomail.Dialer
 
@@ -47,12 +40,6 @@ func mailConnectionInit(config MailConfig) {
 }
 
 // =============================================== REDIS =============================================== //
-type RedisConfig struct {
-	Host     string
-	Port     string
-	Password string
-}
-
 // redis connection
 var RedisClient *redis.Client
 
