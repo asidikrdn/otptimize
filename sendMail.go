@@ -2,12 +2,16 @@ package otptimize
 
 import (
 	"bytes"
+	"embed"
 	"fmt"
 	"html/template"
 	"log"
 
 	"gopkg.in/gomail.v2"
 )
+
+//go:embed templates/*.html
+var templates embed.FS
 
 // mail verification
 func sendVerificationEmail(appName string, targetName string, targetEmail string, token string) {
@@ -18,7 +22,13 @@ func sendVerificationEmail(appName string, targetName string, targetEmail string
 	}
 
 	// get template file
-	t, err := template.ParseFiles("templates/verificationEmail.html")
+	templateContent, err := templates.ReadFile("verificationEmail.html")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	t, err := template.New("verificationEmail").Parse(string(templateContent))
 	if err != nil {
 		fmt.Println(err.Error())
 		return
