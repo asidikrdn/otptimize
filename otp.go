@@ -45,7 +45,7 @@ func GenerateAndSendOTP(otpLength int, appName string, targetName string, target
 	}
 
 	// send otp to target mail
-	go sendVerificationEmail(appName, targetName, targetEmail, otpToken)
+	sendVerificationEmail(appName, targetName, targetEmail, otpToken)
 
 	return nil
 }
