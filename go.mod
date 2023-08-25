@@ -1,4 +1,4 @@
-module otptimize
+module github.com/asidikrdn/otptimize
 
 go 1.20
 
