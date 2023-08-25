@@ -59,7 +59,7 @@ Pastikan untuk mengganti nilai-nilai konfigurasi email dan Redis sesuai dengan k
 
 Inisialisasi koneksi dengan konfigurasi email dan Redis yang diberikan.
 
-### GenerateAndSendOTP(otpLength int, appName string, targetName string, targetEmail string) error
+### GenerateAndSendOTP(otpLength int, tokenExpirationMinutes int, appName string, targetName string, targetEmail string) error
 
 Generate dan kirim OTP ke alamat email yang ditentukan. OTP akan disimpan dalam Redis.
 
