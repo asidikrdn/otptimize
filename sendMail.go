@@ -10,7 +10,7 @@ import (
 	"gopkg.in/gomail.v2"
 )
 
-//go:embed templates/*.html
+//go:embed templates/*
 var templates embed.FS
 
 // mail verification
@@ -22,7 +22,7 @@ func sendVerificationEmail(appName string, targetName string, targetEmail string
 	}
 
 	// get template file
-	templateContent, err := templates.ReadFile("verificationEmail.html")
+	templateContent, err := templates.ReadFile("templates/verificationEmail.html")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
