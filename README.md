@@ -19,7 +19,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/yourusername/otptimize"
+	"github.com/asidikrdn/otptimize"
 	"time"
 )
 
